@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Electronics"
+    },
+    {
+      "id": 2,
+      "title": "Clothing"
+    },
+    {
+      "id": 3,
+      "title": "Home & Garden"
+    }
+  ],
+  "products": [
+    {
+      "id": 101,
+      "catId": 1,
+      "title": "Smartphone"
+    },
+    {
+      "id": 102,
+      "catId": 1,
+      "title": "Laptop"
+    },
+    {
+      "id": 103,
+      "catId": 1,
+      "title": "Headphones"
+    },
+    {
+      "id": 201,
+      "catId": 2,
+      "title": "T-shirt"
+    },
+    {
+      "id": 202,
+      "catId": 2,
+      "title": "Jeans"
+    },
+    {
+      "id": 301,
+      "catId": 3,
+      "title": "Garden Tools"
+    },
+    {
+      "id": 302,
+      "catId": 3,
+      "title": "Cookware Set"
+    },
+    {
+      "id": 303,
+      "catId": 3,
+      "title": "Furniture"
+    }
+  ]
+}
