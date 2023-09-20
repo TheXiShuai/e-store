@@ -1,64 +1,63 @@
-import React, { useState, useEffect } from "react";
 import "./App.css";
-import Category from "./components/Category";
-import { getCategories, getProducts } from "./fetcher";
+import React, { useState } from "react";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { getCategories } from "./fetcher";
+
+import ProductDetail from "./components/productDetail";
+import Basket from "./components/basket";
+import Checkout from "./components/checkout";
+import Category from "./components/category";
+import Home from "./components/home";
+import OrderConfirmation from "./components/orderConfirmation";
+import Layout from "./components/layout";
+import SearchResults from "./components/searchResults";
 
 function App() {
-  const [categories, setCategories] = useState({errorMessage:'',data:[]});
-  const [products, setProducts] = useState({errorMessage:'',data:[]});
+    const [categories, setCategories] = useState({
+        errorMessage: "",
+        data: [],
+    });
 
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const responseObject = await getCategories();
+            setCategories(responseObject);
+        };
+        fetchData();
+    }, []);
 
-  useEffect(() => {
-const fetchData = async() =>{
-  const resObject = await getCategories();
-  setCategories(resObject);
-
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <Layout
+                                categories={categories}
+                            />
+                        }
+                    >
+                        <Route index element={<Home />} />
+                        <Route path="basket" element={<Basket />} />
+                        <Route path="checkout" element={<Checkout />} />
+                        <Route path="orderconfirmation" element={<OrderConfirmation />} />
+                        <Route path="search" element={<SearchResults /> } />
+                        <Route
+                            path="categories/:categoryId"
+                            element={<Category />}
+                        />
+                        <Route
+                            path="products/:productId"
+                            element={<ProductDetail />}
+                        />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
-fetchData();
 
-  }, []);
-
-  const handleCategoryClick = id => {
-    const fetchData = async() =>{
-      const resObject = await getProducts(id);
-      setProducts(resObject);
-    }
-fetchData();
-  };
-
-  const renderCategories = () => {
-    return categories.data.map((c) => (
-      <Category
-        key={c.id}
-        id={c.id}
-        title={c.title}
-        onCategoryClick={() => handleCategoryClick(c.id)}
-      />
-    ));
-  };
-
-  const renderProducts = () => {
-    return products.data.map((p) => <div>{p.title}</div>);
-  };
-
-  return (
-    <>
-      <header>My store</header>
-
-      <section>
-        {categories.errorMessage && <div>Error:{categories.errorMessage}</div>}
-        <nav>{categories.data && renderCategories()}</nav>
-
-        <article>
-        {products.errorMessage && <div>Error:{products.errorMessage}</div>}
-          <h1>Products</h1>
-          {products && renderProducts()}
-        </article>
-      </section>
-
-      <footer>footer</footer>
-    </>
-  );
-}
 export default App;

@@ -3,15 +3,15 @@
   padding: 0px;
   margin: 0px;
 }
+a{
+  color:darkslategray;
+  text-decoration: none;
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  color: darkslategray;
-  text-decoration: none;
-}
 
 /* Style the header */
 header {
@@ -20,35 +20,36 @@ header {
   text-align: center;
   font-size: 35px;
   color: white;
-  display: grid;
+  display:grid;
   grid-template-columns: 0.1fr 0.1fr 1fr 0.1fr;
 }
 
-header a {
-  color: white;
+header a{
+  color:white;
 }
 
-#search {
-  display: flex;
-}
-
-#search input {
-  margin-left: 10px;
-  height: 30px;
-  margin-top: 5px;
-}
-
-#headerHomeIcon {
+#headerHomeIcon{
   justify-self: start;
 }
 
-#headerTitle {
+#headerTitle{
   justify-self: center;
 }
 
-#headerCartIcon {
+#headerCartIcon{
   justify-self: end;
 }
+
+#search{
+  display:flex;
+}
+
+#search input{
+  margin-left:10px;
+  height:30px;
+  margin-top:5px;
+}
+
 
 /* Container for flexboxes */
 section {
@@ -81,10 +82,12 @@ nav ul li:hover {
 }
 
 main {
-  flex: 0.9;
   padding-top: 20px;
+  flex:0.9;
   min-height: 1600px;
+
 }
+
 
 /* Style the footer */
 footer {
@@ -94,8 +97,8 @@ footer {
   color: white;
 }
 
-footer a {
-  color: white;
+footer a{
+  color:white;
 }
 
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
